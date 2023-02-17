@@ -24,6 +24,11 @@ import stanza
 # from stanza.server import CoreNLPClient
 import pprint 
 
+java_path = "C:/Program Files/Java/jdk-19/bin/java.exe"
+os.environ['JAVAHOME'] = java_path
+# "C:/Program Files/Java/jdk-19/bin/java.exe"
+
+
 # These few lines are important
 BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
@@ -382,6 +387,31 @@ def flask_test():
 	print(final_words_dict)
 
 	return final_words_dict;
+
+
+#ADITYA CHANGES
+
+@app.route('/words',methods=['GET'])
+def flaskPlayWords():
+	print("in flaskPlaywords")
+	clear_all();
+	mText = request.args.get('signConvert') #gets the text data from input field of front end
+	text=mText.replace("+", " ")
+	print("text is", text)
+	if(text==""):
+		return "";
+	take_input(text)
+
+	# fills the json 
+	for words in final_output_in_sent:
+		for i,word in enumerate(words,start=1):
+			final_words_dict[i]=word;
+
+	print("---------------Final words dict--------------");
+	print(final_words_dict)
+
+	return render_template('someNew.html', data=final_words_dict)
+
 
 
 # serve sigml files for animation
