@@ -24,8 +24,8 @@ import stanza
 # from stanza.server import CoreNLPClient
 import pprint 
 
-java_path = "C:/Program Files/Java/jdk-19/bin/java.exe"
-os.environ['JAVAHOME'] = java_path
+#java_path = "C:/Program Files/Java/jdk-19/bin/java.exe"
+#os.environ['JAVAHOME'] = java_path
 # "C:/Program Files/Java/jdk-19/bin/java.exe"
 
 
@@ -101,6 +101,7 @@ def download_required_packages():
 
 
 # Pipeline for stanza (calls spacy for tokenizer)
+stanza.download('en')
 en_nlp = stanza.Pipeline('en',processors={'tokenize':'spacy'})	
 # print(stopwords.words('english'))
 
