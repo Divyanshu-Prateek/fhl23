@@ -17,8 +17,9 @@ import ssl
 
 ssl._create_default_https_context = ssl._create_unverified_context
 from flask import Flask,request,render_template,send_from_directory,jsonify
-
+from flask_cors import CORS #new code
 app =Flask(__name__,static_folder='static', static_url_path='')
+CORS(app) # This will enable CORS for all routes
 
 import stanza
 # from stanza.server import CoreNLPClient
