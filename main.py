@@ -247,30 +247,40 @@ def modify_tree_structure(parent_tree):
 
 # converts the text in parse trees
 def reorder_eng_to_isl(input_string):
-	download_required_packages();
-	# check if all the words entered are alphabets.
-	count=0
-	for word in input_string:
-		if(len(word)==1):
-			count+=1;
+	try :
+		print('fhl_log : in reorder_eng_to_isl start : \n')
+		download_required_packages();
+		# check if all the words entered are alphabets.
+		print('fhl_log : in reorder_eng_to_isl downloaded : \n')
+		count=0
+		for word in input_string:
+			if(len(word)==1):
+				count+=1;
 
-	if(count==len(input_string)):
-		return input_string;
-	
-	parser = StanfordParser()
-	# Generates all possible parse trees sort by probability for the sentence
-	possible_parse_tree_list = [tree for tree in parser.parse(input_string)]
-	print("i am testing this",possible_parse_tree_list)
-	# Get most probable parse tree
-	parse_tree = possible_parse_tree_list[0]
-	# print(parse_tree)
-	# Convert into tree data structure
-	parent_tree = ParentedTree.convert(parse_tree)
-	
-	modified_parse_tree = modify_tree_structure(parent_tree)
-	
-	parsed_sent = modified_parse_tree.leaves()
-	return parsed_sent
+		if(count==len(input_string)):
+			return input_string;
+		print('fhl_log : in reorder_eng_to_isl calling standford parser : \n')
+		parser = StanfordParser()
+		print('fhl_log : in reorder_eng_to_isl called standform parser : \n')
+		# Generates all possible parse trees sort by probability for the sentence
+		possible_parse_tree_list = [tree for tree in parser.parse(input_string)]
+		print('fhl_log : in reorder_eng_to_isl did something : \n')
+		print("i am testing this :",possible_parse_tree_list)
+		# Get most probable parse tree
+		parse_tree = possible_parse_tree_list[0]
+		print('fhl_log : in reorder_eng_to_isl possible parse tree : \n')
+		# print(parse_tree)
+		# Convert into tree data structure
+		parent_tree = ParentedTree.convert(parse_tree)
+		print('fhl_log : in reorder_eng_to_isl convert tree : \n')
+		modified_parse_tree = modify_tree_structure(parent_tree)
+		print('fhl_log : in reorder_eng_to_isl modify tree : \n')
+		parsed_sent = modified_parse_tree.leaves()
+		return parsed_sent
+	except:
+		print('fhl_log : catch in reorder_eng_to_isl\n')
+		return null;
+
 
 
 # final word list
@@ -367,19 +377,24 @@ final_words_dict = {};
 
 @app.route('/',methods=['GET'])
 def index():
-    print("at index")
-    clear_all();
-    mText = request.args.get('signConvert') #gets the text data from input field of front end    
-    if mText == None:
-        return render_template('index.html', data={1:"0"})
-    text=mText.replace("+", " ")
-    print("text is", text)
-    take_input(text)
-    # fills the json     
-    for words in final_output_in_sent:
-        for i,word in enumerate(words,start=1):
-            final_words_dict[i]=word        
-    return render_template('index.html', data=final_words_dict)
+	print("fhl_log index fn: at start \n")
+	clear_all();
+	mText = request.args.get('signConvert') #gets the text data from input field of front end
+	if mText == None:
+		print("fhl_log index fn: inside mText \n")
+		return render_template('index.html', data={1:"0"})
+	text=mText.replace("+", " ")
+	print("fhl_log index fn: after replacing :",text)
+	take_input(text)
+	print("fhl_log final_output_in_sent dict :")
+	print(final_output_in_sent)
+	# fills the json 
+	for words in final_output_in_sent:
+		for i,word in enumerate(words,start=1):
+			final_words_dict[i]=word
+	print("fhl_log final_words_dict dict :")
+	print(final_words_dict)
+	return render_template('index.html', data=final_words_dict)
 
 
 @app.route('/',methods=['GET','POST'])
