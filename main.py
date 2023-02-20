@@ -367,8 +367,19 @@ final_words_dict = {};
 
 @app.route('/',methods=['GET'])
 def index():
-	clear_all();
-	return render_template('index.html')
+    print("at index")
+    clear_all();
+    mText = request.args.get('signConvert') #gets the text data from input field of front end    
+    if mText == None:
+        return render_template('index.html', data={1:"0"})
+    text=mText.replace("+", " ")
+    print("text is", text)
+    take_input(text)
+    # fills the json     
+    for words in final_output_in_sent:
+        for i,word in enumerate(words,start=1):
+            final_words_dict[i]=word        
+    return render_template('index.html', data=final_words_dict)
 
 
 @app.route('/',methods=['GET','POST'])
