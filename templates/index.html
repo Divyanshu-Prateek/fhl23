@@ -79,12 +79,19 @@ function startPlayer(sigmlURL) {
 }
 </script>
 <div class="main">
-    <div class="container">
+    <div class="container" style="
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 0px;">
         <!-- animation player frame -->
-        <div class="player card" >
+        <div class="player card" style="border-left-width: 0px;
+        border-right-width: 0px;
+        border-top-width: 0px;
+        width: 1500px;
+        height: 900px;">
             <a id="player"></a>
             <div class="anim"> 
-                <div style="box-sizing: border-box; width: 100%; height: 100%; padding: 15px;" >
+                <div style="box-sizing: border-box; width: 100%; height: 100%; padding: 0px;" >
                     <table align="center" style="width:100%; height:100%;" >
                     <tr align="center">
                     
@@ -93,14 +100,14 @@ function startPlayer(sigmlURL) {
                     <!--================================================================-->
                     <!-- Replaced by an avatar panel -->
                     <!--================================================================-->
-                    <td width="100%" height="90%" >
+                    <td width="100%" height="100%" >
                         <div class="CWASAAvatar av0" align="center" ></div>
                     </td>
                     <!--================================================================-->
                     
                     </tr><tr>
                     
-                    <td align="center" >
+                    <td align="center" style="display:none;">
                     
                     <span class="CWASAAvMenu av0" ></span>
                     <input type="button" value="Sign" class="bttnPlaySiGMLURL av0" />
@@ -125,7 +132,7 @@ function startPlayer(sigmlURL) {
                     // Set default sign
                     // console.log("here");
                     setSiGMLURL("SignFiles/B.sigml");
-                    
+                    var mData = {{data | tojson}}
                     </script>
                     
                     </td>
@@ -139,7 +146,7 @@ function startPlayer(sigmlURL) {
             
         </div>
         <!-- input for text -->
-        <div class="englishInput">
+        <div class="englishInput" style="display:none;">
             <form method="POST" id= 'form'>
                 Input:<input id="text" type="text" name="text" autocomplete="off">
                 <button id = "submit"  >Submit</button>
@@ -147,14 +154,15 @@ function startPlayer(sigmlURL) {
             <!-- <button class="btn-primary bttnPlaySiGMLURL av0">Submit</button> -->
             <!-- <input type="button" value="Sign" class="bttnPlaySiGMLURL av0" /> -->
         </div>
-        <div class="curr_playing">
+        <!--<p>{{data}}</p>-->
+        <div class="curr_playing" style="display:none;">
             Current Word :- <p class="curr_word_playing"></p>
         </div>
-        <div class="islOutput">
+        <div class="islOutput" style="display:none;">
             ISL text: <p id ="isl_text"></p>
 
         </div>
-        <div class="test_word_list">
+        <div class="test_word_list" style="display:none;">
             Available Words:- 
             <ul class="test_list">
                
@@ -163,7 +171,7 @@ function startPlayer(sigmlURL) {
        
     </div>
 </div>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/someNew.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- <script type="text/javascript" src="{{ url_for('static', filename='js/player.js') }}"></script> -->
 
