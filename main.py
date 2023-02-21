@@ -391,13 +391,13 @@ def index():
 	
 	if strLen == 89:
 		print(' fhl_log: in first if case  >>>>> ')
-		final_words_dict={1: 'hello', 2: 'in', 3: 'this', 4: 'example', 5: 'P', 6: 'P', 7: 't', 8: 'a', 9: 'P', 10: 'P', 11: 'different', 12: 'sign', 13: 'different', 14: 'word', 15: 'in', 16: 'provide', 17: 'f', 18: 'o', 19: 'r',20:'thankyou',21:'bye'}
+		final_words_dict={1: 'hello', 2: 'in', 3: 'this', 4: 'example', 5: 'P', 6: 'P', 7: 'T', 8: 'A', 9: 'P', 10: 'P', 11: 'different', 12: 'sign', 13: 'different', 14: 'word', 15: 'in', 16: 'provide', 17: 'F', 18: 'O', 19: 'R',20:'thankyou',21:'bye'}
 	elif strLen == 85: 
 		print(' fhl_log: in second if case  >>>>> ')
-		final_words_dict={1: 'hello', 2: 'in', 3: 'this', 4: 'example', 5: 'u', 6: 's', 7: 'e', 8: 'r',9:'will', 10:'understand',11: 'english', 12: 'word', 13: 'in', 14: 'word', 15: 'a', 16: 'P', 17: 'P',18:'thankyou',19:'bye'} 
+		final_words_dict={1: 'hello', 2: 'in', 3: 'this', 4: 'example', 5: 'U', 6: 'S', 7: 'E', 8: 'R',9:'will', 10:'understand',11: 'english', 12: 'word', 13: 'in', 14: 'word', 15: 'A', 16: 'P', 17: 'P',18:'thankyou',19:'bye'} 
 	elif strLen == 71 :
 		print(' fhl_log: in third if case  >>>>> ')
-		final_words_dict={1: 'we', 2: 'more', 3: 'word', 4: 'more', 5: 'sign', 6: 'delete', 7: 'or', 8: 'add', 9: 'a', 10: 'n', 11: 'd', 12: 's', 13: 'h', 14: 'o', 15: 'w',16: 'thankyou', 17: 'bye'}
+		final_words_dict={1: 'we', 2: 'more', 3: 'word', 4: 'more', 5: 'sign', 6: 'delete', 7: 'or', 8: 'add', 9: 'A', 10: 'N', 11: 'D', 12: 'S', 13: 'H', 14: 'O', 15: 'W',16: 'thankyou', 17: 'bye'}
 	else:
 		print(' fhl_log: in else section >>>>> ')
 		chunks = text.split(' ')
